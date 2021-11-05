@@ -1,13 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse"> 
-      <div class="container">
-        <%= link_to "#{image_tag("logo.png", width: "75")} Model Arts Studio".html_safe, root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right ">
-            <li style="top: 12px"><%= link_to "MAS", about_path %></li>
-            <li style="top: 12px"><%= link_to "Contact", contact_path %></li>
-            <li style="top: 12px"><%= link_to "Help", help_path %></li>
-            <li style="top: 12px"><%= link_to "Log in", signup_path %></li>
-          </ul> 
-        </nav>
-      </div>
-    </header>
+  <div class="container">
+    <%= link_to "#{image_tag("logo.png", width: "75")} Model Arts Studio".html_safe, root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right ">
+        <li style="top: 12px"><%= link_to "MAS", about_path %></li>
+        <li style="top: 12px"><%= link_to "Contacta", contact_path %></li>
+        <li style="top: 12px"><%= link_to "Soporte", help_path %></li>
+        <% if logged_in? %>
+          <li style="top: 12px"><%= link_to "Usuario", "#" %></li>
+          <li class="dropdown" style="top: 12px">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Cuenta <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Perfil", current_user %></li>
+              <li><%= link_to "Configurar", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Salir", logout_path, method: :delete %> </li>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li style="top: 12px"><%= link_to "Entrar", login_path %></li>
+        <% end %>
+      </ul> 
+    </nav>
+  </div>
+</header>
