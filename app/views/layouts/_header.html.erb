@@ -6,7 +6,7 @@
         <li style="top: 12px"><%= link_to "MAS", about_path %></li>
         <li style="top: 12px"><%= link_to "Contacta", contact_path %></li>
         <li style="top: 12px"><%= link_to "Soporte", help_path %></li>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <li style="top: 12px"><%= link_to "Usuario", "#" %></li>
           <li class="dropdown" style="top: 12px">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -17,12 +17,13 @@
               <li><%= link_to "Configurar", '#' %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Salir", logout_path, method: :delete %> </li>
+                <%= link_to "Salir", destroy_user_session_path, method: :delete %> </li>
               </li>
             </ul>
           </li>
         <% else %>
-          <li style="top: 12px"><%= link_to "Entrar", login_path %></li>
+          <li style="top: 12px"><%= link_to "Entrar",  new_user_session_path %></li>
+          <li style="top: 12px"><%= link_to "Registrarte",  new_user_registration_path %></li>
         <% end %>
       </ul> 
     </nav>
